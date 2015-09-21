@@ -12,7 +12,7 @@ def get_ec2_instances(region, name_filter=""):
     instances = ec2_conn.get_all_instances()
     for instance in instances:
         i = instance.instances[0]
-        if name_filter in i.tags.get('Name', ''):
+        if name_filter in i.tags.get('Name', '') and i.state != 'terminated':
             print "{:<10} {:<40} {:<10} {:<20}".format(i.id, i.tags.get('Name', ''), i.instance_type,
                                                        i.dns_name or "No DNS name")
 
