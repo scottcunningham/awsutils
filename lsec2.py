@@ -15,7 +15,7 @@ def get_ec2_instances(region, name_filter=".*"):
     for instance in instances:
         i = instance.instances[0]
         if regex.match(i.tags.get('Name', '')) and i.state != 'terminated':
-            print "{:<10} {:<40} {:<10} {:<20}".format(i.id, i.tags.get('Name', ''), i.instance_type,
+            print "{:<17} {:<40} {:<10} {:<20}".format(i.id, i.tags.get('Name', ''), i.instance_type,
                                                        i.dns_name or "No DNS name")
 
 if __name__ == "__main__":
